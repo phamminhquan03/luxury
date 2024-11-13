@@ -13,6 +13,7 @@
 </div>
 <div>
     <input type="submit" name="themmoi" value="Thêm mới">
+    <a href="index.php?act=listdm"><input type="button" value="Danh sách"></a>
 </div>
 </form>
 </div>

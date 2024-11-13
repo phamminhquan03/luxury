@@ -22,6 +22,25 @@ if (isset($_GET['act'])){
     }
     include "danhmuc/add.php";
     break;
+    case 'listdm':
+        $listdanhmuc = loadall_danhmuc();
+        include 'danhmuc/list.php';
+        break;
+
+    case 'xoadm':
+        if (isset($_GET['id']) && ($_GET['id']) ){
+            delete_danhmuc($_GET['id']);
+
+        }
+        $listdanhmuc = loadall_danhmuc();
+        include 'danhmuc/list.php';
+        break;
+        case 'suadm':
+            if (isset($_GET['id']) && ($_GET['id']>0)){
+                $dm = loadone_danhmuc($_GET['id']);
+            }
+            include 'danhmuc/update.php';
+            break;
 }
 }
 
