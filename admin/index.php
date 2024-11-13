@@ -41,6 +41,26 @@ if (isset($_GET['act'])){
             }
             include 'danhmuc/update.php';
             break;
+
+            case 'updatedm':
+                if(isset($_POST['capnhat']) && ($_POST['capnhat']) ){
+                    $name = trim($_POST['name']);
+                    $id = $_POST['id'];
+
+                    if(empty($name)){
+                        $thongbao = "Vui lòng nhập tên loại";
+
+                    }elseif(is_numeric($name)){
+                        $thongbao = "Tên loại không được là số";
+
+                    }else{
+                        update_danhmuc($id,$name);
+                        $thongbao = "Cập nhật thành công";
+                    }
+                }
+                $listdanhmuc = loadall_danhmuc();
+                include "danhmuc/list.php";
+                break;
 }
 }
 
