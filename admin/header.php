@@ -62,7 +62,7 @@
     <div class="sidebar">
         <!-- Logo section -->
         <div class="logo text-center">
-            <img src="https://via.placeholder.com/100x50" alt="Logo">
+            <img src="../upload/logo2.png" alt="Logo">
         </div>
 
         <!-- Menu items -->

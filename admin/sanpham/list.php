@@ -117,7 +117,7 @@
         extract($sanpham);
         $suasp = "index.php?act=suasp&id=" . $id;
         $xoasp = "index.php?act=xoasp&id=" . $id;
-        $imgpath = "../upload" .$img;
+        $imgpath = "../upload/" .$img;
         if (is_file($imgpath)){
             $img = "<img src ='" . $imgpath . "' height='80'>";
         }else{

@@ -17,5 +17,21 @@ $sql.=" ORDER BY id desc";
 $listsanpham = pdo_query($sql);
 return $listsanpham;
 }
+function delete_sanpham($id){
+    $sql = "DELETE FROM sanpham WHERE id=".$id;
+    pdo_execute($sql);
+}
+function loadone_sanpham($id){
+    $sql = "SELECT * FROM sanpham where id=".$id;
+    $sp =pdo_query_one($sql);
+    return $sp;
+}
+function update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh){
+    if($hinh!="")
+    $sql = "UPDATE sanpham SET iddm='".$iddm."', name='".$tensp."', price='".$giasp."', mota='".$mota."', img='".$hinh."' WHERE id = ".$id;
+    else
+    $sql = "UPDATE sanpham SET iddm='".$iddm."', name='".$tensp."', price='".$giasp."', mota='".$mota."' WHERE id = ".$id;
+pdo_execute($sql);
+}
 
 ?>
