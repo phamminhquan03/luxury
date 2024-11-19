@@ -141,54 +141,37 @@
                 <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+
+  <?php
+  $i=0;
+  foreach($spnew as $sp){
+    extract($sp);
+    $hinh = $imgpath.$img;
+    $linksp = "index.php?act=sanphamct&idsp=".$id;
+if(($i==2)||($i==5)||($i==8)||($i==11)){
+    $mr = "";
+}else{
+    $mr = "margin_right";
+}
+echo'
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                     <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-1.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Hair Shining Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
+                        <img class="img-fluid mb-4" src="'.$hinh.'" alt="">
+                        <a href="'.$linksp.'" class="h6 d-inline-block mb-2">'.$name.'</a>
+                        <h5 class="text-primary mb-3">'.$price.'</h5>
+                        <a href="'.$linksp.'" class="btn btn-outline-primary px-3">Add To Cart</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-2.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Anti-dandruff Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="img/product-1.png" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="" class="h6 d-inline-block mb-2">Anti Hair Fall Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                        <a href="" class="btn btn-outline-primary px-3">Add To Cart</a>
-                    </div>
-                </div>
+
+';
+  }
+  
+  ?>
+
+
+
+
+
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <div class="product-item text-center border h-100 p-4">
                         <img class="img-fluid mb-4" src="img/product-2.png" alt="">

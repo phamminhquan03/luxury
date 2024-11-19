@@ -33,5 +33,20 @@ function update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh){
     $sql = "UPDATE sanpham SET iddm='".$iddm."', name='".$tensp."', price='".$giasp."', mota='".$mota."' WHERE id = ".$id;
 pdo_execute($sql);
 }
+function loadall_sanpham_home(){
+    $sql = "SELECT * FROM sanpham WHERE 1 order by id desc limit 0,9";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
+function load_ten_dm($iddm){
+    if($iddm>0){
+        $sql = "SELECT * FROM danhmuc where id=".$iddm;
+        $dm = pdo_query_one($sql);
+        extract($dm);
+        return $name;
 
+    }else{
+        return "";
+    }
+}
 ?>
