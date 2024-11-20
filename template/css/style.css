@@ -213,7 +213,7 @@ img.animated.pulse {
 /*** How To Use ***/
 .how-to-use {
     position: relative;
-    background: url(../img/bg.png) center center no-repeat;
+  
     background-size: cover;
 }
 
