@@ -74,12 +74,16 @@
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
-                        <form action="index.php?act=sanpham" method="post" class="form">
-                        <input type="text" name="kyw" required class="input" placeholder="Nhập từ khóa">
-                        <input type="submit" name="timkiem" class="search" value="Tìm kiếm">
-                    </form>
+
+
                     </div>
-                    <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block">Shop Now</a>
+                    <form action="index.php?act=sanpham" method="post" class="form">
+    <div class="input-group mb-1">
+        <input type="text" name="kyw" required class="form-control" placeholder="Nhập từ khóa">
+        <button type="submit" name="timkiem" class="btn btn-primary">Tìm kiếm</button>
+    </div>
+</form>
+                    <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block ms-3">Shop Now</a>
                 </div>
             </nav>
         </div>
@@ -101,7 +105,7 @@
                     <a href="" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</a>
                 </div>
                 <div class="col-lg-6">
-                    <img class="img-fluid animated pulse infinite" src="img/shampoo.png" alt="">
+                    <img class="img-fluid animated pulse infinite" src="../upload/dell1.jpg" alt="">
                 </div>
             </div>
         </div>
