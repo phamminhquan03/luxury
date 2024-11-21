@@ -8,7 +8,8 @@
  $spnew = loadall_sanpham_home();
  ob_start();
  include "view/header.php";
-
+ include "view/home.php";
+ include "view/footer.php";
 
 
 if(isset($_GET['act']) && ($_GET['act']!="")){
@@ -26,27 +27,8 @@ if(isset($_GET['act']) && ($_GET['act']!="")){
                 $iddm = 0;
             }$dssp = loadall_sanpham($kyw, $iddm);
             $tendm = load_ten_dm($iddm);
-            include "view/sanpham.php";
-            break;
-
-            case 'sanphamct':
-                if(isset($_GET['idsp']) && ($_GET['idsp'] >0)){
-                    $id = $_GET['idsp'];
-                    $onesp = loadone_sanpham($id);
-                    extract($onesp);
-                    include "view/sanphamct.php";
-                }else{
-                    include 'view/home.php';
-                }
-                break;
-
-                default:
             include "view/home.php";
-            break;
     }
-}else{
-        include "view/home.php";
-    }
-
- include "view/footer.php";
+}
+ 
 ?>
