@@ -131,7 +131,7 @@
         <td>'. htmlspecialchars($name) . '</td>
         <td>'.$img.'</td>
         <td>'. htmlspecialchars($price) . '</td>
-        <td>'. htmlspecialchars($mota) . '</td>
+      
         <td><center class="d-flex"><a class="pe-2" href="' . $suasp . '"><input type="button" value="Sửa" class="btn-custom"></a>
         <a href="' . $xoasp . '"><input class="bg-danger btn-custom" type="button" value="Xóa"></a></center></td>
         </tr>';

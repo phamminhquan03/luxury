@@ -97,6 +97,11 @@
                     <i class="bi bi-bell"></i> Thống kê
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="http://localhost/duan0/index.php" class="nav-link">
+                    <i class="bi bi-bell"></i> Trở về trang người dùng
+                </a>
+            </li>
         </ul>
     </div>
 

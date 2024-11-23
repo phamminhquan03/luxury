@@ -39,12 +39,7 @@
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
+   
     <!-- Spinner End -->
 
 
@@ -53,7 +48,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.html" class="navbar-brand">
-                    <h2 class="text-white">Hairnic</h2>
+                    <h2 class="text-white">LUXURY</h2>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -62,7 +57,6 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="index.php" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="index.php?act=sanpham" class="nav-item nav-link">Products</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -83,7 +77,10 @@
         <button type="submit" name="timkiem" class="btn btn-primary">Tìm kiếm</button>
     </div>
 </form>
-                    <a href="" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block ms-3">Shop Now</a>
+                    <a href="index.php?act=addtocart" class="btn btn-primary py-2 px-4 d-none d-lg-inline-block ms-3 ">Shop Now</a>
+                    <div class="iconadmin ms-3"><a href="index.php?act=dangnhap" ><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                    <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3
+                    -3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path></svg></a></div>
                 </div>
             </nav>
         </div>
@@ -96,11 +93,9 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 text-center text-lg-start">
-                    <h3 class="fw-light text-white animated slideInRight">Natural & Organic</h3>
-                    <h1 class="display-4 text-white animated slideInRight">Hair <span class="fw-light text-dark">Shampoo</span> For Healthy Hair</h1>
-                    <p class="text-white mb-4 animated slideInRight">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Etiam feugiat rutrum lectus, sed auctor ex malesuada id. Orci varius natoque penatibus et
-                        magnis dis parturient montes.</p>
+                    <h3 class="fw-light text-white animated slideInRight">Giá rẻ & Ở đây</h3>
+                    <h1 class="display-4 text-white animated slideInRight">Laptop<span class="fw-light text-dark">Giảm giá </span> Cực Sâu</h1>
+                    <p class="text-white mb-4 animated slideInRight">Kể từ khi ra đời lần đầu tiên cách đây hơn 40 năm bởi Osborne Computer, chiếc laptop đã không ngừng được các hãng sản xuất cải tiến cả về ngoại hình và công nghệ. Đến nay, nó đã trở thành một trong những thiết bị điện tử không thể thiếu phục vụ cho nhiều mục đích như công việc, học tập và giải trí.</p>
                     <a href="" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Shop Now</a>
                     <a href="" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</a>
                 </div>
