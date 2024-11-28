@@ -10,6 +10,23 @@
     <main>
         
         <a href="./?act=trang-add-sanpham"><button class="button_sanpham">Thêm Sản Phẩm</button></a>
+        <div class="flex-grow-1">
+    
+
+</div>
+<form action="./?act=loc-sanpham" method="post">
+    <input type="text " name="kyw" class="form-control" placeholder="Lọc Theo Tên Sản Phẩm" aria-label="Search products">
+    <select name="iddm" class="form-select">
+        <option value="0" selected>All Danh mục</option>
+        <?php 
+          foreach($list_danhmuc as $danhmuc){
+            extract($danhmuc);
+            echo '<option value="'.$id.'">'.$name_dm.'</option>';
+          }
+        ?>
+    </select>
+    <input type="submit" name="listok" value="Lọc Sản Phẩm" class="btn-custom" id="">
+</form>
     <table>
         <thead>
             <th>STT</th>
@@ -97,6 +114,26 @@
             border-radius: 5px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+        .btn-custom {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 15px;
+        transition: background-color 0.3s ease;
+        text-align: center;
+    }
+
+    .btn-custom:hover {
+        background-color: #0056b3;
+    }
+    th{
+        text-align: center;
+    }
+    td{
+
+        text-align: center;
+    }
     </style>
 
 </body>

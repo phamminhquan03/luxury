@@ -8,9 +8,28 @@ class sanpham_controllers {
 
     public function form_danhsach() {
         $list_sanpham = $this->models_sanpham->danhsach_sanpham();
+        $list_danhmuc = $this->models_sanpham->danhsach_danhmuc();
         require_once './views/form_danhsachsanpham.php';
     }
 
+    public function Filter() {
+        // Get the values from the POST request
+        if (isset($_POST['listok']) && ($_POST['listok'])) {
+            $kyw = $_POST['kyw'];
+            $iddm = $_POST['iddm'];
+        } else {
+            $kyw = "";
+            $iddm = 0;
+        }
+    
+        // Call the modified method from the model with the filters
+        $list_sanpham = $this->models_sanpham->danhsach_sanpham($kyw, $iddm);
+        $list_danhmuc = $this->models_sanpham->danhsach_danhmuc();
+    
+        // Load the view
+        require_once './views/form_danhsachsanpham.php';
+    }
+    
     public function form_addsanpham() {
         $list_danhmuc = $this->models_sanpham->danhsach_danhmuc();
         require_once './views/form_add_sanpham.php';

@@ -1,12 +1,12 @@
 <?php
-function insert_sanpham($tensp,$giasp,$hinh,$mota,$iddm){
-    $sql = "INSERT INTO sanpham(name,price,img,mota,iddm) VALUES ('$tensp','$giasp','$hinh','$mota','$iddm')";
+ function insert_sanpham($tensp,$giasp,$hinh,$mota,$iddm){
+    $sql = "INSERT INTO sanpham(name_sp,price,img,mota,iddm) VALUES ('$tensp','$giasp','$hinh','$mota','$iddm')";
 pdo_execute($sql);
-}
+ }
 function loadall_sanpham($kyw = "", $iddm = 0) {
     $sql = "SELECT * FROM sanpham WHERE 1";
     if ($kyw != "") {
-        $sql .= " AND name LIKE '%$kyw%'";
+        $sql .= " AND name_sp LIKE '%$kyw%'";
     }
     if ($iddm > 0) {
         $sql .= " AND iddm = $iddm";

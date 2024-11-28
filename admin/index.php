@@ -6,9 +6,14 @@ include "../model/danhmuc.php";
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
 
+// biến môi trường sản phẩm
 require_once './controllers/controllers_sp.php';
 
 require_once './models/models_sanpham.php';
+// biến môi trường tài khoản
+require_once './controllers/controllers_taikhoan.php';
+
+require_once './models/models_taikhoan.php';
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -65,74 +70,10 @@ if (isset($_GET['act'])) {
             $listdanhmuc = loadall_danhmuc();
             include "danhmuc/list.php";
             break;
-        //     case 'addsp':
-        //     if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-        //         $iddm = $_POST['iddm'];
-        //         $tensp = trim($_POST['name']);
-        //         $giasp = $_POST['price'];
-        //         $mota = trim($_POST['mota']);
-        //         $hinh = $_FILES['img']['name'];
-        //         $target_dir = "../upload/";
-        //         $target_file = $target_dir . basename($_FILES['img']['name']);
 
-        //         if (!empty($hinh)) {
-        //             move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
-        //         }
-
-
-
-        //         insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm);
-        //         $thongbao = "Thêm thành công";
-        //     }
-        //     $listdanhmuc = loadall_danhmuc();
-        //     include "sanpham/add.php";
-        //     break;
-        // case "listsp":
-        //     if (isset($_POST['listok']) && ($_POST['listok'])) {
-        //         $kyw = $_POST['kyw'];
-        //         $iddm = $_POST['iddm'];
-        //     } else {
-        //         $kyw = "";
-        //         $iddm = 0;
-        //     }
-        //     $listdanhmuc = loadall_danhmuc();
-        //     $listsanpham = loadall_sanpham($kyw, $iddm);
-        //     include 'sanpham/list.php';
-        //     break;
-        // case "xoasp":
-        //     if (isset($_GET['id']) && ($_GET['id'])) {
-        //         delete_sanpham($_GET['id']);
-        //     }
-        //     $listsanpham = loadall_sanpham();
-        //     include 'sanpham/list.php';
-        //     break;
-        // case "suasp":
-        //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-        //         $sanpham = loadone_sanpham($_GET['id']);
-        //     }
-        //     $listdanhmuc = loadall_danhmuc();
-        //     include 'sanpham/update.php';
-        //     break;
-        // case "updatesp":
-        //     if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
-        //         $id = $_POST['id'];
-        //         $iddm = $_POST['iddm'];
-        //         $tensp = $_POST['tensp'];
-        //         $giasp = $_POST['giasp'];
-        //         $mota = $_POST['mota'];
-        //         $hinh = $_FILES['hinh']['name'];
-        //         $target_dir = "../upload/";
-        //         $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-        //         if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-        //         } else {
-        //         }
-        //         update_sanpham($id,$iddm,$tensp,$giasp,$mota,$hinh);
-        //     $thongbao = "Cập nhật thành công";
-        //     }
-        //     $listdanhmuc = loadall_danhmuc();
-        //     $listsanpham = loadall_sanpham("",0);
-        //     include "sanpham/list.php";
-        //     break;
+        case "index":
+            include "admin/home.php";
+            break;
     }
 }
 
@@ -142,19 +83,29 @@ if (isset($_GET['act'])) {
 
 
 
-$act = $_GET['act'] ?? '/';
-$act = strtolower($act);
+$act = $_GET['act'] ?? 'index'; // Default action
 
-// Sử dụng match để xử lý các hành động sản phẩm
 match ($act) {
+    
     'trang-danh-sach' => (new sanpham_controllers())->form_danhsach(),
     'trang-add-sanpham' => (new sanpham_controllers())->form_addsanpham(),
     'them-sanpham' => (new sanpham_controllers())->create_addsanpham(),
     'trang-sua-sanpham' => (new sanpham_controllers())->form_update_sanpham(),
     'sua-sanpham' => (new sanpham_controllers())->update_sanpham(),
     'xoa-sanpham' => (new sanpham_controllers())->delete_sanpham(),
-    
-    // Add adddm action for handling category addition
+    'loc-sanpham' => (new sanpham_controllers())->Filter(),
+
+    'danh-sach-taikhoan' => (new taikhoan_controllers())->form_taikhoan(),
+    'sua-chuc-vu' => (new taikhoan_controllers())->cap_quyen_taikhoan(),
+    'danh-sach-bill' => (new taikhoan_controllers())->form_list_bill(),
+    'sua-trang-thai' => (new taikhoan_controllers())->trang_thai_bill(),
+
+
+
+
+    'index' => function() {
+            include "admin/home.php"; // Display homepage
+        },
     'adddm' => function() {
         if (isset($_POST['themmoi']) && $_POST['themmoi']) {
             $tenloai = trim($_POST['tenloai']);
@@ -169,27 +120,24 @@ match ($act) {
         }
         include "danhmuc/add.php";
     },
-
     'listdm' => function() {
         $listdanhmuc = loadall_danhmuc();
         include 'danhmuc/list.php';
     },
-    'xoadm' => function(){
+    'xoadm' => function() {
         if (isset($_GET['id']) && $_GET['id']) {
             delete_danhmuc($_GET['id']);
         }
         $listdanhmuc = loadall_danhmuc();
         include 'danhmuc/list.php';
     },
-
-    'suadm' => function(){
+    'suadm' => function() {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $dm = loadone_danhmuc($_GET['id']);
         }
         include 'danhmuc/update.php';
     },
-        
-    'updatedm' => function(){
+    'updatedm' => function() {
         if (isset($_POST['capnhat']) && $_POST['capnhat']) {
             $name = trim($_POST['name']);
             $id = $_POST['id'];
@@ -206,11 +154,6 @@ match ($act) {
         $listdanhmuc = loadall_danhmuc();
         include "danhmuc/list.php";
     },
-        
-
-
-
-    // Default case to handle unsupported actions
     default => throw new Exception("Hành động không được hỗ trợ: $act"),
 };
 

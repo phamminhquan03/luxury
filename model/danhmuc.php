@@ -1,6 +1,6 @@
 <?php
 function insert_danhmuc($tenloai){
-    $sql = "INSERT INTO danhmuc(name_dm) VALUES ('$tenloai')";
+    $sql = "INSERT INTO danhmuc(name) VALUES ('$tenloai')";
     pdo_execute($sql);
 }
 function delete_danhmuc($id){
@@ -18,7 +18,7 @@ function loadone_danhmuc($id){
     return $dm;
 }
 function update_danhmuc($id, $tenloai){
-    $sql = "UPDATE danhmuc SET name_dm='".$tenloai."'WHERE id = ".$id;
+    $sql = "UPDATE danhmuc SET name='".$tenloai."'WHERE id = ".$id;
     pdo_execute($sql);
 }
 

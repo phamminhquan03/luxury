@@ -3,26 +3,41 @@ class models_sanpham {
     public $conn;
 
     public function __construct() {
-        // Ensure the database connection is properly established
-        $this->conn = connectDB();
+        $this->conn = connectDB(); // Ensure the database connection is properly established
     }
-
-    // Get the list of products
-    public function danhsach_sanpham() {
+    // hiển thị và lọc timg kiếm sản phẩm
+    public function danhsach_sanpham($kyw = "", $iddm = 0) {
         try {
             $sql = 'SELECT sanpham.*, danhmuc.name_dm 
                     FROM sanpham
                     JOIN danhmuc ON sanpham.iddm = danhmuc.id
-                    ORDER BY sanpham.id DESC';
+                    WHERE 1';
+            if (!empty($kyw)) {
+                $sql .= " AND sanpham.name_sp LIKE :kyw";
+            }
+            if ($iddm > 0) {
+                $sql .= " AND sanpham.iddm = :iddm";
+            }
+
+            $sql .= ' ORDER BY sanpham.id DESC';
+
             $stmt = $this->conn->prepare($sql);
+            if (!empty($kyw)) {
+                $stmt->bindValue(':kyw', '%' . $kyw . '%'); 
+            }
+            if ($iddm > 0) {
+                $stmt->bindValue(':iddm', $iddm);
+            }
+
             $stmt->execute();
             return $stmt->fetchAll();
+
         } catch (PDOException $e) {
             error_log("Error fetching product list: " . $e->getMessage());
             return [];
         }
     }
-
+    // thêm sản phẩm 
     public function add_sanpham($name_sp, $price, $img, $mota, $iddm) {
         try {
             $sql = 'INSERT INTO sanpham (name_sp, price, img, mota, iddm) 
@@ -41,7 +56,7 @@ class models_sanpham {
             return false;
         }
     }
-
+    //hiển thị danh mục sản phẩm 
     public function danhsach_danhmuc(){
         try {
             $sql = 'SELECT * FROM danhmuc';
@@ -50,10 +65,10 @@ class models_sanpham {
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             error_log("Error fetching product list: " . $e->getMessage());
-            return [];
+            return true;
         }
     }
-
+    // tìm kiếm id
     public function get_sanpham($id) {
         try {
             $sql = 'SELECT sanpham.*, danhmuc.name_dm 
@@ -68,7 +83,7 @@ class models_sanpham {
             return null;
         }
     }
-
+    // sửa chữa lại sản phẩm 
     public function update_sanpham($id, $name_sp, $price, $img, $mota, $iddm) {
         try {
             $sql = 'UPDATE sanpham 
@@ -93,7 +108,7 @@ class models_sanpham {
             return false;
         }
     }
-
+    // xóa sản phẩm 
     public function delete_sanpham($id) {
         try {
             $sql = 'DELETE FROM sanpham WHERE id = :id';
@@ -105,5 +120,6 @@ class models_sanpham {
             return false;
         }
     }
+
 }
 ?>

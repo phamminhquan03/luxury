@@ -68,7 +68,7 @@
         <!-- Menu items -->
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="index.php?act=index" class="nav-link active">
+                <a href="" class="nav-link active">
                     <i class="bi bi-house-door"></i> Trang chủ
                 </a>
             </li>
@@ -88,13 +88,23 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="./?act=danh-sach-bill" class="nav-link">
+                    <i class="bi bi-basket"></i> Quản Lý đơn hàng
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="./?act=danh-sach-taikhoan" class="nav-link">
                     <i class="bi bi-shield-lock"></i> Quản lý tài khoản
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="bi bi-bell"></i> Thống kê
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="http://localhost/luxury-main/index.php" class="nav-link">
+                    <i class="bi bi-bell"></i> Trở về trang người dùng
                 </a>
             </li>
         </ul>

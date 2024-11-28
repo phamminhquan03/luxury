@@ -11,7 +11,7 @@
   foreach($dssp as $sp){
     extract($sp);
     $hinh = $imgpath.$img;
-    $linksp = "index1.php?act=sanphamct&idsp=".$id;
+    $linksp = "index.php?act=sanphamct&idsp=".$id;
 if(($i==2)||($i==5)||($i==8)||($i==11)){
     $mr = "";
 }else{
