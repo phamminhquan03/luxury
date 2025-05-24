@@ -1,9 +1,7 @@
 <?php
-/**
- * Mở kết nối đến CSDL sử dụng PDO
- */
+// Thư viện PDO
 function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;dbname=duan0;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=duan1;charset=utf8"; // sửa "duan1" thành tên CSDL thật nếu cần
     $username = 'root';
     $password = '';
 
@@ -11,6 +9,8 @@ function pdo_get_connection(){
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
 }
+
+
 /**
  * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
  * @param string $sql câu lệnh sql
@@ -31,21 +31,7 @@ function pdo_execute($sql){
         unset($conn);
     }
 }
-function pdo_execute_return_lastInsertId($sql){
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        return $conn->lastInsertId();
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
-}
+
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
  * @param string $sql câu lệnh sql
@@ -76,18 +62,22 @@ function pdo_query($sql){
  * @return array mảng chứa bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_one($sql, $params = []) {
-    try {
+function pdo_query_one($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
-        $stmt->execute($params); // Ensure this line is passing the parameters correctly
-        $result = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch one row as an associative array
-        return $result;
-    } catch (PDOException $e) {
-        throw new Exception("Query failed: " . $e->getMessage());
+        $stmt->execute($sql_args);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
     }
 }
-
 /**
  * Thực thi câu lệnh sql truy vấn một giá trị
  * @param string $sql câu lệnh sql
@@ -111,3 +101,5 @@ function pdo_query_value($sql){
         unset($conn);
     }
 }
+
+?>
